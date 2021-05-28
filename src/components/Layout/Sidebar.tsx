@@ -28,12 +28,12 @@ export class MainLayout extends React.Component {
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo" >
+            {/* here  you can put anything like logo*/}
           </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={<AreaChartOutlined />}>
               nav 1
             </Menu.Item>
-
           </Menu>
         </Sider>
         <Layout className="site-layout">
