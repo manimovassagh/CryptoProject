@@ -1,19 +1,18 @@
 import React, { ReactElement } from 'react';
 import { Coin } from '../components/types/Types'
-import { Spin } from 'antd';
 import { useCryptoApi } from '../components/CustomHooks/CryptoApi'
-import { SideBar } from '../components/Layout/Sidebar'
-
+import { MainLayout } from '../components/Layout/Sidebar'
+import LoadingSpinner from '../components/LoadingSpinner/LoadingSpinner'
 export default function App(): ReactElement {
 
-  // const [coins, setCoins] = useCryptoApi<Coin[]>('GET', '')
+  const [coins] = useCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
 
-  // if (!coins) { return <Spin /> }
+  console.log(coins)
+  if (!coins) { return <LoadingSpinner /> }
 
   return (
     <div >
-
-      <SideBar />
+      <MainLayout />
     </div>
   )
 }

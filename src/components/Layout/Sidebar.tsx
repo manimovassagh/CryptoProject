@@ -7,14 +7,12 @@ import { Layout, Menu } from 'antd';
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  UserOutlined,
-  VideoCameraOutlined,
-  UploadOutlined,
+  AreaChartOutlined,
 } from '@ant-design/icons';
 
 const { Header, Sider, Content } = Layout;
 
-export class SideBar extends React.Component {
+export class MainLayout extends React.Component {
   state = {
     collapsed: false,
   };
@@ -29,17 +27,14 @@ export class SideBar extends React.Component {
     return (
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
-          <div className="logo" />
+          <div className="logo" >
+            <h1 style={{ color: 'white', textAlign: 'center' }}>Cryptopedia</h1>
+          </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
-            <Menu.Item key="1" icon={<UserOutlined />}>
+            <Menu.Item key="1" icon={<AreaChartOutlined />}>
               nav 1
             </Menu.Item>
-            <Menu.Item key="2" icon={<VideoCameraOutlined />}>
-              nav 2
-            </Menu.Item>
-            <Menu.Item key="3" icon={<UploadOutlined />}>
-              nav 3
-            </Menu.Item>
+
           </Menu>
         </Sider>
         <Layout className="site-layout">

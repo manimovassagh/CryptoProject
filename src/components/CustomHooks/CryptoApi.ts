@@ -19,11 +19,11 @@ export function useCryptoApi<T>(method: Method, path: string): [T | undefined, S
 
 
 export function cryptoApi<T>(method: Method, path: string, callback: (data: T) => void, data = {}): void {
-  const binancePriceUrl = 'https://api.binance.com/api/v3'
+  const binancePriceUrl = 'https://cors-anywhere.herokuapp.com/https://api1.binance.com'
 
   axios({
     method: method,
-    url: `${binancePriceUrl}/${path}?symbol=btceur`,
+    url: `${binancePriceUrl}/${path}`,
     headers: { Authorization: 'Bearer 1234567890' },
     data
   })
