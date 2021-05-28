@@ -9,16 +9,16 @@ import { Spin } from 'antd';
 export default function App(): ReactElement {
   const [data, setData] = useState<Coin[]>([])
 
-  //check why it make fetch several times !!
-  useEffect(() => {
-    axios.get(`https://api.binance.com/api/v3/exchangeInfo`)
-      .then(res => {
-        const coins = res.data;
-        setData(coins)
-        console.log(coins.symbols)
-      })
+  // check why it make fetch several times!!
+  // useEffect(() => {
+  //   axios.get(`https://api.binance.com/api/v3/trades`)
+  //     .then(res => {
+  //       const coins = res.data;
+  //       setData(coins)
+  //       console.log(coins.symbols)
+  //     }, [])
+  // })
 
-  })
   if (!data) { return <Spin /> }
   return (
     <div >
