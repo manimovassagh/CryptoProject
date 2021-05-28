@@ -11,9 +11,9 @@ export default function App(): ReactElement {
   if (!coins) { return <LoadingSpinner /> }
 
   return (
-    <div >
+    <>
       <MainLayout />
-    </div>
+    </>
   )
 }
 
