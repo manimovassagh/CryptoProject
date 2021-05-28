@@ -1,21 +1,12 @@
 import React, { useState } from 'react';
-import 'antd/dist/antd.css';
+import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
 import './index.css';
 import { Layout, Menu } from 'antd';
-import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
-  AreaChartOutlined,
-} from '@ant-design/icons';
-
-import {
-  BrowserRouter,
-  Switch,
-  Route,
-  NavLink
-} from "react-router-dom";
+import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, } from '@ant-design/icons';
 import { CryptoList } from '../Pages/CryptoList'
 import { CryptoDetails } from '../Pages/CryptoDetails';
+import 'antd/dist/antd.css';
+import { Footer } from 'antd/lib/layout/layout';
 
 const { Header, Sider, Content } = Layout;
 
@@ -61,13 +52,16 @@ export function MainLayout() {
               <Route exact path="/">
                 <CryptoList />
               </Route>
-              <Route path="/details">
+              <Route path="/details/:symbol">
                 <CryptoDetails />
               </Route>
             </Switch>
           </Content>
+
         </Layout>
       </Layout>
+
+      <Footer style={{ textAlign: 'center' }}>Cryptopedia ©2021 Created by Ant Mani Movassagh</Footer>
     </BrowserRouter>
   );
 }

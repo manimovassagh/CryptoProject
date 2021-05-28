@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 export function CryptoDetails() {
   return (
     <div>
