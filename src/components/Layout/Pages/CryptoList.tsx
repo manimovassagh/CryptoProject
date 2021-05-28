@@ -1,7 +1,8 @@
-import { Table } from 'antd'
 import React from 'react'
+import { Table } from 'antd'
+
 import { useCryptoApi } from '../../CustomHooks/CryptoApi'
-import LoadingSpinner from '../../LoadingSpinner/LoadingSpinner'
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import { Coin } from '../../types/Types'
 
 

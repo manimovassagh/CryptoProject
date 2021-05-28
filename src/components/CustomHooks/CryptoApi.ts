@@ -17,7 +17,6 @@ export function useCryptoApi<T>(method: Method, path: string): [T | undefined, S
   return [data, setData];
 }
 
-
 export function cryptoApi<T>(method: Method, path: string, callback: (data: T) => void, data = {}): void {
   const binancePriceUrl = 'https://cors-anywhere.herokuapp.com/https://api1.binance.com'
 
