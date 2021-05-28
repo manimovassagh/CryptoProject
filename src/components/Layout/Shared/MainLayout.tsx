@@ -22,7 +22,7 @@ const { Header, Sider, Content } = Layout;
 export function MainLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const toggle = () => {
-    setCollapsed(true)
+    setCollapsed(!collapsed)
   }
   return (
     <BrowserRouter>
@@ -43,11 +43,11 @@ export function MainLayout() {
         {/* part two is a main layout  */}
         <Layout className="site-layout">
           <Header className="site-layout-background" style={{ padding: 0 }}>
-            <h1>Cryptopedia</h1>
             {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
               className: 'trigger',
               onClick: toggle,
             })}
+
           </Header>
           <Content
             className="site-layout-background"
