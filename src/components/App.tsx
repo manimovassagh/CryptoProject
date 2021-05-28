@@ -1,19 +1,19 @@
 import React, { ReactElement } from 'react';
-import { DataReciever } from './DataReciever';
 import { Coin } from '../components/types/Types'
 import { Spin } from 'antd';
 import { useCryptoApi } from '../components/CustomHooks/CryptoApi'
-
+import { SideBar } from '../components/Layout/Sidebar'
 
 export default function App(): ReactElement {
 
-  const [coins, setCoins] = useCryptoApi<Coin[]>('GET', 'trades')
+  // const [coins, setCoins] = useCryptoApi<Coin[]>('GET', '')
 
-  if (!coins) { return <Spin /> }
+  // if (!coins) { return <Spin /> }
+
   return (
     <div >
-      <DataReciever />
 
+      <SideBar />
     </div>
   )
 }

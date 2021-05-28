@@ -38,4 +38,6 @@ export interface Coin {
 }
 
 
+export interface CoinPrice {
 
+}

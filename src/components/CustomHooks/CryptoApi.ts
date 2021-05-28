@@ -19,11 +19,11 @@ export function useCryptoApi<T>(method: Method, path: string): [T | undefined, S
 
 
 export function cryptoApi<T>(method: Method, path: string, callback: (data: T) => void, data = {}): void {
-  const binancePriceUrl = 'https://api.binance.com/api/v3/'
+  const binancePriceUrl = 'https://api.binance.com/api/v3'
 
   axios({
     method: method,
-    url: `${binancePriceUrl}/${path}`,
+    url: `${binancePriceUrl}/${path}?symbol=btceur`,
     headers: { Authorization: 'Bearer 1234567890' },
     data
   })
