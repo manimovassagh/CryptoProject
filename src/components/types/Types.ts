@@ -39,5 +39,9 @@ export interface Coin {
 
 
 export interface CoinPrice {
-
+  symbol: string,
+  bidPrice: string,
+  bidQty: string,
+  askPrice: string,
+  askQty: string,
 }

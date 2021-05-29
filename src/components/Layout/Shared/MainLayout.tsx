@@ -61,7 +61,7 @@ export function MainLayout() {
         </Layout>
       </Layout>
 
-      <Footer style={{ textAlign: 'center' }}>Cryptopedia ©2021 Created by Ant Mani Movassagh</Footer>
+      <Footer style={{ textAlign: 'center' }}>Cryptopedia ©2021 Created by Mani Movassagh</Footer>
     </BrowserRouter>
   );
 }
