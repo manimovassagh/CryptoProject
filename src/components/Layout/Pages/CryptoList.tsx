@@ -1,16 +1,15 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Table } from 'antd'
 // import { useCryptoApi } from '../../CustomHooks/CryptoApi'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 // import { Coin, CoinPrice } from '../../Types/Types'
-import { Link, useHistory } from 'react-router-dom'
+import { useHistory } from 'react-router-dom'
 import { dataSource } from '../Shared/DummyData'
 
 export function CryptoList() {
   // const [coins] = useCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
 
   // console.log(dataSource)
-  const [selectedRow, setSelectedRow] = useState<String>()
   const columns = [
     {
       title: 'symbol',
@@ -51,9 +50,10 @@ export function CryptoList() {
 
     // <Link to={`/details/${selectedRow}`}>
     <Table style={{ cursor: 'pointer' }}
-      onRow={(_selectedRow) => {
+      onRow={(_selectedRow, index) => {
         return {
           onClick: () => clickHandler(_selectedRow.symbol)
+
         };
       }}
       columns={columns} dataSource={dataSource} />

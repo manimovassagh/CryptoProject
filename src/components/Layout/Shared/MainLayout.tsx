@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
-import { BrowserRouter, Switch, Route, NavLink } from "react-router-dom";
+import { BrowserRouter, NavLink } from "react-router-dom";
 import './index.css';
 import { Layout, Menu } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, } from '@ant-design/icons';
-import { CryptoList } from '../Pages/CryptoList'
-import { CryptoDetails } from '../Pages/CryptoDetails';
 import 'antd/dist/antd.css';
 import { Footer } from 'antd/lib/layout/layout';
+import { Switcher } from './Switcher'
 
 const { Header, Sider, Content } = Layout;
 
@@ -27,7 +26,7 @@ export function MainLayout() {
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={<AreaChartOutlined />}>
               Crypto Details
-              <NavLink to="/details" ></NavLink>
+              <NavLink to="/" ></NavLink>
             </Menu.Item>
           </Menu>
         </Sider>
@@ -47,21 +46,12 @@ export function MainLayout() {
               minHeight: 280,
             }}
           >
-            <Switch>
-              <Route exact path="/">
-                <CryptoList />
-              </Route>
-              {/*ask armin later what is this for??? component={CryptoDetails} */}
-              <Route path="/details/:symbol" component={CryptoDetails}>
-                <CryptoDetails />
-              </Route>
-            </Switch>
+            {/* defined a component for switcher to make it a little cleaner */}
+            <Switcher />
           </Content>
-
         </Layout>
       </Layout>
-
-      <Footer style={{ textAlign: 'center' }}>Cryptopedia ©2021 Created by Mani Movassagh</Footer>
+      {/* <Footer style={{ textAlign: 'center' }}>Cryptopedia ©2021 Created by Mani Movassagh</Footer> */}
     </BrowserRouter>
   );
 }
