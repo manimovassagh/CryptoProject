@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import { Table } from 'antd'
 
-import { useCryptoApi } from '../../CustomHooks/CryptoApi'
+// import { useCryptoApi } from '../../CustomHooks/CryptoApi'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-import { Coin, CoinPrice } from '../../types/Types'
-import { Link, useHistory } from 'react-router-dom'
+// import { Coin, CoinPrice } from '../../types/Types'
+import { Link } from 'react-router-dom'
 
 import { dataSource } from '../Shared/DummyData'
 
@@ -12,11 +12,12 @@ export function CryptoList() {
   // const [coins] = useCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
 
   // console.log(dataSource)
-
+  const [selectedRow, setSelectedRow] = useState<String>()
   const columns = [
     {
       title: 'symbol',
       dataIndex: 'symbol',
+      // {dataIndex: 'email', render: (data) => <Link to="pages/mypage">{data}</Link>}
       key: 'symbol',
     },
     {
@@ -42,19 +43,18 @@ export function CryptoList() {
   ];
   if (!dataSource) { return <LoadingSpinner /> }
 
-  const setData = function (_setSymbolData: string) {
-    return _setSymbolData
-  }
+
 
   return (
-    <Link to={`/details/:${setData}`}>
+
+    <Link to={`/details/:${selectedRow}`}>
+
       <Table
         onRow={(record, rowIndex) => {
           return {
-            onClick: () => setData(record.symbol)
+            onClick: () => setSelectedRow(record.symbol)
           };
         }}
-
         columns={columns} dataSource={dataSource} />
     </Link>
 
