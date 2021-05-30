@@ -47,7 +47,7 @@ export function CryptoList() {
 
   return (
 
-    <Link to={`/details/:${selectedRow}`}>
+    <Link to={`/details/${selectedRow}`}>
 
       <Table
         onRow={(record, rowIndex) => {
