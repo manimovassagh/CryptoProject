@@ -1,18 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Table } from 'antd'
 
 import { useCryptoApi } from '../../CustomHooks/CryptoApi'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import { Coin, CoinPrice } from '../../types/Types'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 
 import { dataSource } from '../Shared/DummyData'
 
 export function CryptoList() {
   // const [coins] = useCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
+  const [symbolData, setSymbolData] = useState<string>()
 
-
-  console.log(dataSource)
+  // console.log(dataSource)
 
   const columns = [
     {
@@ -43,12 +43,21 @@ export function CryptoList() {
   ];
   if (!dataSource) { return <LoadingSpinner /> }
 
-  const onMyCoin = (value: any) => console.log(value)
+  function setData(_setSymbolData: string) {
+    setSymbolData(_setSymbolData)
+  }
 
   return (
-    <Link to={``}>
+    <Link to={`/details/:${symbolData}`}>
       {/* // onRow={(coin) => ({ onClick: () => onMyCoin(coin) })} */}
-      <Table onRow={(coin) => ({ onClick: () => onMyCoin(coin) })} columns={columns} dataSource={dataSource} />
+      <Table
+        onRow={(record, rowIndex) => {
+          return {
+            onClick: () => setData(record.symbol)
+          };
+        }}
+
+        columns={columns} dataSource={dataSource} />
     </Link>
 
 

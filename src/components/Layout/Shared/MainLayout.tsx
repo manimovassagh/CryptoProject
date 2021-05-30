@@ -38,7 +38,6 @@ export function MainLayout() {
               className: 'trigger',
               onClick: toggle,
             })}
-
           </Header>
           <Content
             className="site-layout-background"
