@@ -3,7 +3,7 @@ import { Table } from 'antd'
 // import { useCryptoApi } from '../../CustomHooks/CryptoApi'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 // import { Coin, CoinPrice } from '../../Types/Types'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { dataSource } from '../Shared/DummyData'
 
 export function CryptoList() {
@@ -39,20 +39,26 @@ export function CryptoList() {
       key: 'askQty',
     },
   ];
+  let history = useHistory()
+
+  function clickHandler(value: string) {
+    history.push(`/details/${value}`)
+  }
 
   if (!dataSource) { return <LoadingSpinner /> }
 
   return (
 
-    <Link to={`/details/${selectedRow}`}>
-      <Table
-        onRow={(_selectedRow) => {
-          return {
-            onClick: () => setSelectedRow(_selectedRow.symbol)
-          };
-        }}
-        columns={columns} dataSource={dataSource} />
-    </Link>
+    // <Link to={`/details/${selectedRow}`}>
+    <Table style={{ cursor: 'pointer' }}
+      onRow={(_selectedRow) => {
+        return {
+          onClick: () => clickHandler(_selectedRow.symbol)
+        };
+      }}
+      columns={columns} dataSource={dataSource} />
+
+    // </Link>
 
 
   )
