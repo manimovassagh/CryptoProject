@@ -10,7 +10,6 @@ import { dataSource } from '../Shared/DummyData'
 
 export function CryptoList() {
   // const [coins] = useCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
-  const [symbolData, setSymbolData] = useState<string>()
 
   // console.log(dataSource)
 
@@ -43,13 +42,12 @@ export function CryptoList() {
   ];
   if (!dataSource) { return <LoadingSpinner /> }
 
-  function setData(_setSymbolData: string) {
-    setSymbolData(_setSymbolData)
+  const setData = function (_setSymbolData: string) {
+    return _setSymbolData
   }
 
   return (
-    <Link to={`/details/:${symbolData}`}>
-      {/* // onRow={(coin) => ({ onClick: () => onMyCoin(coin) })} */}
+    <Link to={`/details/:${setData}`}>
       <Table
         onRow={(record, rowIndex) => {
           return {
