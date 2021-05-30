@@ -4,11 +4,11 @@ import { Dispatch, SetStateAction, useEffect, useState } from 'react'
 type SetState<T> = Dispatch<SetStateAction<T>>
 
 
-export function useCryptoApi<T>(method: Method, path: string): [T | undefined, SetState<T | undefined>] {
+export function useBinanceCryptoApi<T>(method: Method, path: string): [T | undefined, SetState<T | undefined>] {
   const [data, setData] = useState<T>();
 
   useEffect(() => {
-    cryptoApi(
+    BinancecryptoApi(
       method,
       path,
       (data_: T) => setData(data_)
@@ -17,7 +17,7 @@ export function useCryptoApi<T>(method: Method, path: string): [T | undefined, S
   return [data, setData];
 }
 
-export function cryptoApi<T>(method: Method, path: string, callback: (data: T) => void, data = {}): void {
+export function BinancecryptoApi<T>(method: Method, path: string, callback: (data: T) => void, data = {}): void {
   const basicCryptoRefrenceUrl = 'https://thingproxy.freeboard.io/fetch/http://api.binance.com'
   ///api/v3/trades
   // const linki=https://cors-anywhere.herokuapp.com/https://api.binance.com/api/v3/ticker/bookTicker

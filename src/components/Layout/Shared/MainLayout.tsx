@@ -4,7 +4,6 @@ import './index.css';
 import { Layout, Menu } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, } from '@ant-design/icons';
 import 'antd/dist/antd.css';
-import { Footer } from 'antd/lib/layout/layout';
 import { Switcher } from './Switcher'
 
 const { Header, Sider, Content } = Layout;
@@ -51,7 +50,6 @@ export function MainLayout() {
           </Content>
         </Layout>
       </Layout>
-      {/* <Footer style={{ textAlign: 'center' }}>Cryptopedia ©2021 Created by Mani Movassagh</Footer> */}
     </BrowserRouter>
   );
 }
