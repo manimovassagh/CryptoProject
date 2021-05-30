@@ -3,7 +3,7 @@ import { Table } from 'antd'
 
 // import { useCryptoApi } from '../../CustomHooks/CryptoApi'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-// import { Coin, CoinPrice } from '../../types/Types'
+// import { Coin, CoinPrice } from '../../Types/Types'
 import { Link } from 'react-router-dom'
 
 import { dataSource } from '../Shared/DummyData'

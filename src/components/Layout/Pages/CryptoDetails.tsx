@@ -1,6 +1,6 @@
 import React from 'react'
 import { useParams } from "react-router-dom";
-import { CoinPrice } from '../../types/Types'
+import { CoinPrice } from '../../Types/BinanceType'
 
 export function CryptoDetails() {
   const { symbol } = useParams<CoinPrice>()
@@ -10,7 +10,6 @@ export function CryptoDetails() {
       <h1>
         {symbol}
       </h1>
-
     </div>
   )
 }

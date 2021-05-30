@@ -1,4 +1,4 @@
-import { CoinPrice } from "../../types/Types";
+import { CoinPrice } from "../../Types/BinanceType";
 
 export const dataSource: CoinPrice[] = [{
   symbol: "BTNC",
