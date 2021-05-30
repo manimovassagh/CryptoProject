@@ -51,7 +51,8 @@ export function MainLayout() {
               <Route exact path="/">
                 <CryptoList />
               </Route>
-              <Route path="/details/:symbol">
+              {/*ask armin later what is this for??? component={CryptoDetails} */}
+              <Route path="/details/:symbol" component={CryptoDetails}>
                 <CryptoDetails />
               </Route>
             </Switch>

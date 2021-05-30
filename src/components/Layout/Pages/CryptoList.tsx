@@ -47,12 +47,12 @@ export function CryptoList() {
 
   return (
 
-    <Link to={`/details/${selectedRow}`}>
+    <Link to={`/details/${"grab value inside damm onClick!!🤦‍♂️🤦‍♂️🤦‍♂️🤦‍♂️"}`}>
 
       <Table
-        onRow={(record, rowIndex) => {
+        onRow={(_selectedRow) => {
           return {
-            onClick: () => setSelectedRow(record.symbol)
+            onClick: () => console.log(_selectedRow.symbol)
           };
         }}
         columns={columns} dataSource={dataSource} />
