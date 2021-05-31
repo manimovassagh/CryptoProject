@@ -5,7 +5,6 @@ import { Layout, Menu } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, EuroCircleOutlined, } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Switcher } from './Switcher'
-import { Image } from 'antd';
 const { Header, Sider, Content } = Layout;
 
 export function MainLayout() {
