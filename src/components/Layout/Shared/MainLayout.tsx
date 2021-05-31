@@ -1,12 +1,18 @@
 import React, { useState } from 'react';
 import { BrowserRouter, NavLink } from "react-router-dom";
 import './index.css';
-import { Layout, Menu } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, EuroCircleOutlined, } from '@ant-design/icons';
+import { Avatar, Col, Layout, Menu, Row } from 'antd';
+import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, EuroCircleOutlined, UserOutlined, } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Switcher } from './Switcher'
-const { Header, Sider, Content } = Layout;
+import { Typography } from 'antd';
 
+// Define Consts
+const { Header, Sider, Content } = Layout;
+const { Title } = Typography;
+
+
+// Main Body Function 
 export function MainLayout() {
   const [collapsed, setCollapsed] = useState(false)
   const toggle = () => {
@@ -34,12 +40,20 @@ export function MainLayout() {
         </Sider>
         {/* part 2 is a main layout including header  */}
         <Layout className="site-layout">
-          <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: toggle,
-            })}
-          </Header>
+          <Row align={'middle'}>
+            <Col span={1}>
+              <Header className="site-layout-background" style={{ padding: 0 }}>
+                {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
+                  className: 'trigger',
+                  onClick: toggle,
+                })}
+              </Header>
+            </Col >
+            <Col push={8} span={14}> <Title level={3}>Cryptopedia</Title></Col>
+            <Col push={8} span={3}>
+              <Avatar style={{ backgroundColor: '#132c54' }} icon={<UserOutlined />} />
+            </Col>
+          </Row>
           <Content
             className="site-layout-background"
             style={{

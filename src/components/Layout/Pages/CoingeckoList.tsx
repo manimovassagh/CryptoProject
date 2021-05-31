@@ -1,8 +1,7 @@
 import React, { ReactElement } from 'react'
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi'
 import { CoingekoMarkets } from '../../Types/CoingekoType'
-import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-import { Avatar, Table } from 'antd'
+import { Avatar, Skeleton, Table } from 'antd'
 import { useHistory } from 'react-router-dom'
 
 export function CoingeckoList(): ReactElement {
@@ -21,14 +20,49 @@ export function CoingeckoList(): ReactElement {
       key: 'name',
     },
     {
-      title: 'Trade Symbol',
-      dataIndex: 'symbol',
-      key: 'symbol',
-    },
-    {
       title: 'Price €',
       dataIndex: 'current_price',
       key: 'current_price',
+    },
+    {
+      title: 'Ranking',
+      dataIndex: 'market_cap_rank',
+      key: 'market_cap_rank',
+    },
+    {
+      title: 'Market Capitalization',
+      dataIndex: 'market_cap',
+      key: 'market_cap',
+    },
+    {
+      title: 'Highest Price(24h)',
+      dataIndex: 'high_24h',
+      key: 'high_24h',
+    },
+    {
+      title: 'Lowest Price(24h)',
+      dataIndex: 'low_24h',
+      key: 'low_24h',
+    },
+    {
+      title: 'Price Change(24h)',
+      dataIndex: 'price_change_24h',
+      key: 'price_change_24h',
+    },
+    {
+      title: 'Price Change %(24h)',
+      dataIndex: 'price_change_percentage_24h',
+      key: 'price_change_percentage_24h',
+    },
+    {
+      title: 'All Time Hight %',
+      dataIndex: 'ath_change_percentage',
+      key: 'ath_change_percentage',
+    },
+    {
+      title: 'Trade Symbol',
+      dataIndex: 'symbol',
+      key: 'symbol',
     },
   ];
   let history = useHistory()
@@ -38,7 +72,7 @@ export function CoingeckoList(): ReactElement {
     console.log(id)
   }
 
-  if (!coingeckoCoins) { return <LoadingSpinner /> }
+  if (!coingeckoCoins) { return <Skeleton /> }
   return (
     <Table rowKey={(record) => record.symbol} style={{ cursor: 'pointer' }}
       onRow={(_selectedRow, index) => {
