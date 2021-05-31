@@ -53,7 +53,6 @@ export function CryptoList() {
       onRow={(_selectedRow, index) => {
         return {
           onClick: () => clickHandler(_selectedRow.symbol)
-
         };
       }}
       columns={columns} dataSource={dataSource} />

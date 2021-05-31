@@ -14,10 +14,10 @@ export function Switcher() {
         <CryptoDetails />
       </Route>
       {/*ask armin later what is this for??? component={CryptoDetails} */}
-      <Route exact path="/binance" component={CoingeckoList}>
+      <Route exact path="/binance" >
         <CoingeckoList />
       </Route>
-      <Route path="/details/:symbol" component={CryptoDetails}>
+      <Route path="/details/:symbol" >
         <CryptoDetails />
       </Route>
     </Switch>
