@@ -8,13 +8,12 @@ import { CryptoList } from '../Pages/CryptoList'
 export function Switcher() {
   return (
     <Switch>
-      <Route exact path="/" >
+      <Route exact path="/">
         <CoingeckoList />
       </Route>
       <Route exact path="/coingeckodetails/:id" >
         <CoingeckoDetails />
       </Route>
-      {/*ask armin later what is this for??? component={CryptoDetails} */}
       <Route exact path="/binance" >
         <CryptoList />
       </Route>
