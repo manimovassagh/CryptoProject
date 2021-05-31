@@ -14,7 +14,6 @@ export function CryptoList() {
     {
       title: 'symbol',
       dataIndex: 'symbol',
-      // {dataIndex: 'email', render: (data) => <Link to="pages/mypage">{data}</Link>}
       key: 'symbol',
     },
     {
@@ -47,18 +46,12 @@ export function CryptoList() {
   if (!dataSource) { return <LoadingSpinner /> }
 
   return (
-
-    // <Link to={`/details/${selectedRow}`}>
-    <Table style={{ cursor: 'pointer' }}
+    <Table rowKey={(record) => record.symbol} style={{ cursor: 'pointer' }}
       onRow={(_selectedRow, index) => {
         return {
           onClick: () => clickHandler(_selectedRow.symbol)
         };
       }}
       columns={columns} dataSource={dataSource} />
-
-    // </Link>
-
-
   )
 }

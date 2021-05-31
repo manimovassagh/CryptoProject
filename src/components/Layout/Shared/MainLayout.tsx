@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter, NavLink } from "react-router-dom";
 import './index.css';
 import { Layout, Menu } from 'antd';
-import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, } from '@ant-design/icons';
+import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, EuroCircleOutlined, } from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import { Switcher } from './Switcher'
 
@@ -27,7 +27,7 @@ export function MainLayout() {
               Coingecko
               <NavLink to="/" ></NavLink>
             </Menu.Item>
-            <Menu.Item key="2" icon={<AreaChartOutlined />}>
+            <Menu.Item key="2" icon={<EuroCircleOutlined />}>
               Binance
               <NavLink exact to="/binance" ></NavLink>
             </Menu.Item>

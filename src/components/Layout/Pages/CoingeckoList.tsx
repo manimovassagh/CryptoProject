@@ -11,7 +11,7 @@ export function CoingeckoList(): ReactElement {
     <div>
       <h1>
         {coingeckoCoins?.map((coin, index) =>
-          <div>{coin.symbol}{coin.current_price}</div>
+          <div key={coin.id}>{coin.symbol}{coin.current_price}</div>
         )}
       </h1>
     </div>
