@@ -8,14 +8,14 @@ export function Switcher() {
   return (
     <Switch>
       <Route exact path="/" >
-        <CryptoList />
+        <CoingeckoList />
       </Route>
       <Route exact path="/coingeckodetails/:id" >
         <CryptoDetails />
       </Route>
       {/*ask armin later what is this for??? component={CryptoDetails} */}
       <Route exact path="/binance" >
-        <CoingeckoList />
+        <CryptoList />
       </Route>
       <Route path="/details/:symbol" >
         <CryptoDetails />

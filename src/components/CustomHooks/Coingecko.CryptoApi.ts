@@ -18,7 +18,7 @@ export function useCoingeckoCryptoApi<T>(method: Method, path: string): [T | und
 }
 
 export function CoingeckocryptoApi<T>(method: Method, path: string, callback: (data: T) => void, data = {}): void {
-  const basicCryptoRefrenceUrl = ''
+  const basicCryptoRefrenceUrl = 'https://api.coingecko.com/api/v3'
 
   ///api/v3/trades
   // const linki=https://cors-anywhere.herokuapp.com/https://api.binance.com/api/v3/ticker/bookTicker
