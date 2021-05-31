@@ -24,8 +24,12 @@ export function MainLayout() {
           </NavLink>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
             <Menu.Item key="1" icon={<AreaChartOutlined />}>
-              Crypto Details
+              Coingecko
               <NavLink to="/" ></NavLink>
+            </Menu.Item>
+            <Menu.Item key="2" icon={<AreaChartOutlined />}>
+              Binance
+              <NavLink exact to="/binance" ></NavLink>
             </Menu.Item>
           </Menu>
         </Sider>
