@@ -11,36 +11,31 @@ export function CoingeckoList(): ReactElement {
 
   const columns = [
     {
-      title: 'image',
+      title: 'Logo',
       dataIndex: 'image',
-      // render: theImageURL => <img src={theImageURL} alt={theImageURL} />,
       key: 'image',
     },
     {
-      title: 'id',
-      dataIndex: 'id',
-      key: 'id',
-    },
-    {
-      title: 'symbol',
-      dataIndex: 'symbol',
-      key: 'symbol',
-    },
-    {
-      title: 'name',
+      title: 'Name',
       dataIndex: 'name',
       key: 'name',
     },
     {
-      title: 'current_price',
+      title: 'Trade Symbol',
+      dataIndex: 'symbol',
+      key: 'symbol',
+    },
+    {
+      title: 'Price €',
       dataIndex: 'current_price',
       key: 'current_price',
     },
   ];
   let history = useHistory()
 
-  function clickHandler(value: string) {
-    history.push(`/details/${value}`)
+  function clickHandler(id: string) {
+    history.push(`/coingeckodetails/${id}`)
+    console.log(id)
   }
 
   if (!coingeckoCoins) { return <LoadingSpinner /> }
@@ -48,7 +43,7 @@ export function CoingeckoList(): ReactElement {
     <Table rowKey={(record) => record.symbol} style={{ cursor: 'pointer' }}
       onRow={(_selectedRow, index) => {
         return {
-          onClick: () => clickHandler(_selectedRow.symbol)
+          onClick: () => clickHandler(_selectedRow.id)
         };
       }}
       columns={columns} dataSource={coingeckoCoins.map(coin => ({ ...coin, image: <Avatar src={coin.image} alt={coin.symbol} /> }))} />
