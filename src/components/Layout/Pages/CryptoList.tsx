@@ -1,14 +1,12 @@
 import React from 'react'
 import { Table } from 'antd'
-// import { useBinanceCryptoApi } from '../../CustomHooks/CryptoApi'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-// import { Coin, CoinPrice } from '../../Types/Types'
 import { useHistory } from 'react-router-dom'
 import { dataSource } from '../Shared/DummyData'
 
+
 export function CryptoList() {
   // const [coins] = useBinanceCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
-
   // console.log(dataSource)
   const columns = [
     {
