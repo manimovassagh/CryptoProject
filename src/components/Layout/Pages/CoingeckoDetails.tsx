@@ -4,15 +4,16 @@ import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi'
 import { CoingekoDetails } from '../../Types/CoingekoDetailsType'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import { Button, Card, Col, Divider, Image, Row, Statistic, Typography } from 'antd';
-import { ArrowUpOutlined } from '@ant-design/icons'
+import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 import * as _ from 'lodash'
+import { CoingekoMarkets } from '../../Types/CoingekoType'
 
 export function CoingeckoDetails(): ReactElement {
   const { id } = useParams<any>()
   const [coingekoCoins] = useCoingeckoCryptoApi<CoingekoDetails>("GET", `coins/${id}?market_data=false&community_data=false&developer_data=false&sparkline=false`)
-
+  const [coingeckoCoinsForAll] = useCoingeckoCryptoApi<CoingekoMarkets[]>('GET', 'coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+  // console.log(selectedCoinFurtherData)
   // Helper Functions for Calculation
-
   //#region 
   const handleTickerPriceFilter = (_coinEuroFilter: CoingekoDetails | undefined) => {
     return _coinEuroFilter?.tickers.filter(coin => coin.target === "EUR")
@@ -22,13 +23,20 @@ export function CoingeckoDetails(): ReactElement {
     const _filteredList = handleTickerPriceFilter(_coinEuroPriceList)
     return _.round(_.meanBy(_filteredList, 'last'), 2)
   }
+  const coinEuroFilter = handleTickerPriceFilter(coingekoCoins)
+
+  const selectedCoinFurtherData = coingeckoCoinsForAll?.find(_coin => _coin.id === `${id}`)
+
+  const ResultOfChange = selectedCoinFurtherData?.price_change_24h
+
+  console.log(ResultOfChange)
+  // check
   //#endregion
 
-  const coinEuroFilter = handleTickerPriceFilter(coingekoCoins)
   if (!coinEuroFilter || !coingekoCoins) { return <LoadingSpinner /> }
 
-  console.log(coinEuroFilter)
-  console.log(coingekoCoins)
+  // console.log(coinEuroFilter)
+  // console.log(coingekoCoins)
   return (
     <>
       <Row align={'middle'}>
@@ -47,30 +55,40 @@ export function CoingeckoDetails(): ReactElement {
         <Col span={8}>
           <div className="site-statistic-demo-card">
             <Row gutter={16}>
-              <Col span={12}>
-                <Card>
-                  <Statistic
-                    title="Active"
-                    value={11.28}
-                    precision={2}
-                    valueStyle={{ color: '#3f8600' }}
-                    prefix={<ArrowUpOutlined />}
-                    suffix="%"
-                  />
-                </Card>
-              </Col>
-              <Col span={12}>
-                <Card>
-                  <Statistic
-                    title="Idle"
-                    value={9.3}
-                    precision={2}
-                    valueStyle={{ color: '#cf1322' }}
-                    prefix={<ArrowUpOutlined />}
-                    suffix="%"
-                  />
-                </Card>
-              </Col>
+
+              {ResultOfChange && ResultOfChange > 0 && (
+                <Col span={12}>
+                  <Card>
+                    <Statistic
+                      title="Price Up in Last 24 Hours"
+                      value={ResultOfChange}
+                      precision={2}
+                      valueStyle={{ color: '#3f8600' }}
+                      prefix={<ArrowUpOutlined />}
+                      suffix="€"
+                    />
+                  </Card>
+                </Col>
+              )}
+
+              {ResultOfChange && ResultOfChange < 0 && (
+
+                <Col span={12}>
+                  <Card>
+                    <Statistic
+                      title="Price Down in Last 24 Hours"
+                      value={ResultOfChange}
+                      precision={2}
+                      valueStyle={{ color: '#cf1322' }}
+                      prefix={<ArrowDownOutlined />}
+                      suffix="€"
+                    />
+                  </Card>
+                </Col>
+              )}
+
+
+
             </Row>
           </div>
         </Col>
