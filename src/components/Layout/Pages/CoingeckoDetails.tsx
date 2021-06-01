@@ -13,7 +13,7 @@ export function CoingeckoDetails(): ReactElement {
   const { id } = useParams<any>()
   const [coingekoCoins] = useCoingeckoCryptoApi<CoingekoDetails>("GET", `coins/${id}?market_data=false&community_data=false&developer_data=false&sparkline=false`)
   const [coingeckoCoinsForAll] = useCoingeckoCryptoApi<CoingekoMarkets[]>('GET', 'coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-  // console.log(selectedCoinFurtherData)
+  console.log(coingekoCoins)
   // Helper Functions for Calculation
   //#region 
   const handleTickerPriceFilter = (_coinEuroFilter: CoingekoDetails | undefined) => {
@@ -22,7 +22,12 @@ export function CoingeckoDetails(): ReactElement {
 
   const calculateAveragePricePerEuro = (_coinEuroPriceList: CoingekoDetails | undefined) => {
     const _filteredList = handleTickerPriceFilter(_coinEuroPriceList)
-    return _.round(_.meanBy(_filteredList, 'last'), 2)
+    if (_.round(_.meanBy(_filteredList, 'last'), 2)) {
+      return _.round(_.meanBy(_filteredList, 'last'), 2)
+
+    } else {
+      return "Not Specified on Markets"
+    }
   }
 
   const history = useHistory()
@@ -39,8 +44,7 @@ export function CoingeckoDetails(): ReactElement {
 
   if (!coinEuroFilter || !coingekoCoins) { return <LoadingSpinner /> }
 
-  // console.log(coinEuroFilter)
-  // console.log(coingekoCoins)
+
   return (
     <>
       <Row align={'middle'}>
