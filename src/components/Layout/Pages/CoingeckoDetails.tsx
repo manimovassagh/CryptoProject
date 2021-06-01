@@ -13,7 +13,7 @@ export function CoingeckoDetails(): ReactElement {
   const { id } = useParams<any>()
   const [coingekoCoins] = useCoingeckoCryptoApi<CoingekoDetails>("GET", `coins/${id}?market_data=false&community_data=false&developer_data=false&sparkline=false`)
   const [coingeckoCoinsForAll] = useCoingeckoCryptoApi<CoingekoMarkets[]>('GET', 'coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-  console.log(coingekoCoins)
+  console.log(coingekoCoins?.links.homepage[0])
   // Helper Functions for Calculation
   //#region 
   const handleTickerPriceFilter = (_coinEuroFilter: CoingekoDetails | undefined) => {
@@ -104,7 +104,10 @@ export function CoingeckoDetails(): ReactElement {
       </Button>
         </Col>
         <Col span={6}>
-          <Statistic title="Active Users" value={112893} loading />
+          <a href={coingekoCoins?.links.homepage[0]}>
+            <Statistic title={coingekoCoins?.links.homepage[0]} value={coingekoCoins?.links.homepage[0]} loading />
+
+          </a>
         </Col>
 
       </Row>

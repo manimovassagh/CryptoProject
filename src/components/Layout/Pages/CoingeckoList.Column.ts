@@ -41,7 +41,7 @@ export const columns = [
     },
   },
   {
-    title: 'Highest Price(24h)',
+    title: 'Highest Price(24h)€',
     dataIndex: 'high_24h',
     key: 'high_24h',
     sorter: {
@@ -50,7 +50,7 @@ export const columns = [
     },
   },
   {
-    title: 'Lowest Price(24h)',
+    title: 'Lowest Price(24h)€',
     dataIndex: 'low_24h',
     key: 'low_24h',
     sorter: {
@@ -59,7 +59,7 @@ export const columns = [
     },
   },
   {
-    title: 'Price Change(24h)',
+    title: 'Price Change(24h)€',
     dataIndex: 'price_change_24h',
     key: 'price_change_24h',
     sorter: {
