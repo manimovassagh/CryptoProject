@@ -49,7 +49,7 @@ export function MainLayout() {
                 })}
               </Header>
             </Col >
-            <Col push={8} span={14}> <Title level={3} italic >Cryptopedia</Title></Col>
+            <Col push={8} span={14}> <Title level={3}  >Cryptopedia</Title></Col>
             <Col push={8} span={3}>
               <Avatar style={{ backgroundColor: '#132c54' }} icon={<UserOutlined />} />
             </Col>
