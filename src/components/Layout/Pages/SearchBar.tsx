@@ -1,18 +1,14 @@
-import React from 'react'
-import { Input, Space } from 'antd';
+import React, { useState } from 'react'
+import { Input } from 'antd';
 
 const { Search } = Input;
 
 
-const onSearch: (value: any) => void = value => console.log(value);
+
 
 export function SearchBar() {
+  const [searchTerm, setSearchTerm] = useState<string>()
   return (
-
-    <Space direction="vertical">
-      <Search placeholder="input search text" onSearch={onSearch} style={{ width: 200 }} />
-
-    </Space>
-
+    <Search placeholder="input search text" onChange={(e) => setSearchTerm(e.target.value)} style={{ width: 200 }} />
   )
 }
