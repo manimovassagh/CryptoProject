@@ -29,8 +29,7 @@ export function CoingeckoDetails(): ReactElement {
 
   const ResultOfChange = selectedCoinFurtherData?.price_change_24h
 
-  console.log(ResultOfChange)
-  // check
+
   //#endregion
 
   if (!coinEuroFilter || !coingekoCoins) { return <LoadingSpinner /> }
@@ -47,11 +46,10 @@ export function CoingeckoDetails(): ReactElement {
             src={coingekoCoins.image.large}
           />
         </Col>
-
         <Col span={12}>
           <Typography.Title>{coingekoCoins.name}</Typography.Title>
         </Col>
-
+        {/* Price Indicater Up */}
         <Col span={8}>
           <div className="site-statistic-demo-card">
             <Row gutter={16}>
@@ -70,9 +68,8 @@ export function CoingeckoDetails(): ReactElement {
                   </Card>
                 </Col>
               )}
-
+              {/* Price Indicater Down */}
               {ResultOfChange && ResultOfChange < 0 && (
-
                 <Col span={12}>
                   <Card>
                     <Statistic
@@ -86,8 +83,6 @@ export function CoingeckoDetails(): ReactElement {
                   </Card>
                 </Col>
               )}
-
-
 
             </Row>
           </div>
@@ -103,9 +98,9 @@ export function CoingeckoDetails(): ReactElement {
         </Col>
 
       </Row>
+
       <Divider>Price Per Euro In Diffrent Exchange Markets</Divider>
       <Row >
-
         <>{coinEuroFilter?.map((_coin, index) =>
           <Col span={4} key={index}>
             <Typography.Title level={5}>
@@ -114,11 +109,7 @@ export function CoingeckoDetails(): ReactElement {
             </Typography.Title>
           </Col >
         )}</>
-
-
       </Row>
-
-
     </>
   )
 }
