@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { BrowserRouter, NavLink } from "react-router-dom";
-import './index.css';
 import { Avatar, Col, Layout, Menu, Row } from 'antd';
 import { MenuUnfoldOutlined, MenuFoldOutlined, AreaChartOutlined, EuroCircleOutlined, UserOutlined, } from '@ant-design/icons';
-import 'antd/dist/antd.css';
 import { Switcher } from './Switcher'
 import { Typography } from 'antd';
+import './index.css';
+import 'antd/dist/antd.css';
 
 // Define Consts
 const { Header, Sider, Content } = Layout;
@@ -49,7 +49,7 @@ export function MainLayout() {
                 })}
               </Header>
             </Col >
-            <Col push={8} span={14}> <Title level={3} style={{ fontFamily: "Kumbh Sans" }}>Cryptopedia</Title></Col>
+            <Col push={8} span={14}> <Title level={3} italic >Cryptopedia</Title></Col>
             <Col push={8} span={3}>
               <Avatar style={{ backgroundColor: '#132c54' }} icon={<UserOutlined />} />
             </Col>
