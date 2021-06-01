@@ -35,8 +35,8 @@ export function CryptoList() {
       key: 'askQty',
     },
   ];
-  let history = useHistory()
 
+  const history = useHistory()
   function clickHandler(value: string) {
     history.push(`/details/${value}`)
   }

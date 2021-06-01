@@ -7,6 +7,7 @@ import { Button, Card, Col, Divider, Image, Row, Statistic, Typography } from 'a
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons'
 import * as _ from 'lodash'
 import { CoingekoMarkets } from '../../Types/CoingekoType'
+import { useHistory } from 'react-router-dom'
 
 export function CoingeckoDetails(): ReactElement {
   const { id } = useParams<any>()
@@ -23,10 +24,14 @@ export function CoingeckoDetails(): ReactElement {
     const _filteredList = handleTickerPriceFilter(_coinEuroPriceList)
     return _.round(_.meanBy(_filteredList, 'last'), 2)
   }
+
+  const history = useHistory()
+  function clickHandler() {
+    history.push(`/`)
+  }
+
   const coinEuroFilter = handleTickerPriceFilter(coingekoCoins)
-
   const selectedCoinFurtherData = coingeckoCoinsForAll?.find(_coin => _coin.id === `${id}`)
-
   const ResultOfChange = selectedCoinFurtherData?.price_change_24h
 
 
@@ -89,7 +94,8 @@ export function CoingeckoDetails(): ReactElement {
         </Col>
         <Col span={5}>
           <Statistic title="Latest Average Price in Euro" value={`${calculateAveragePricePerEuro(coingekoCoins)} €`} precision={2} />
-          <Button style={{ marginTop: 16 }} type="primary">
+
+          <Button onClick={() => clickHandler()} style={{ marginTop: 16 }} type="primary">
             Back to Home
       </Button>
         </Col>
