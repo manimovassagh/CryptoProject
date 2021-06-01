@@ -134,7 +134,7 @@ export function CoingeckoDetails(): ReactElement {
       </Button>
         </Col>
         <Col span={6}>
-          <a href={coingekoCoins?.links.homepage[0]} >
+          <a href={coingekoCoins?.links.homepage[0]} target={"blank"}>
             <Statistic title={coingekoCoins?.links.homepage[0]} value={coingekoCoins?.links.homepage[0]} loading />
           </a>
         </Col>
