@@ -24,6 +24,7 @@ export function CoingeckoList(): ReactElement {
   if (!coingeckoCoins) { return <Skeleton /> }
   return (
 
+
     <Table onChange={onChange} rowKey={(record) => record.symbol} style={{ cursor: 'pointer' }}
       onRow={(_selectedRow) => {
         return {

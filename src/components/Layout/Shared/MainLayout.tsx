@@ -16,6 +16,8 @@ const { Title } = Typography;
 // Main Body Function 
 export function MainLayout() {
   const [collapsed, setCollapsed] = useState(false)
+
+
   const toggle = () => {
     setCollapsed(!collapsed)
   }

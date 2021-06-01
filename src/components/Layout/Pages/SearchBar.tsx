@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Input } from 'antd';
 
 const { Search } = Input;
@@ -7,8 +7,8 @@ const { Search } = Input;
 
 
 export function SearchBar() {
-  const [searchTerm, setSearchTerm] = useState<string>()
+  // const [searchTerm, setSearchTerm] = useState<string>()
   return (
-    <Search placeholder="input search text" onChange={(e) => setSearchTerm(e.target.value)} style={{ width: 200 }} />
+    <Search placeholder="input search text" onChange={(e) => console.log(e.target.value)} style={{ width: 200 }} />
   )
 }
