@@ -1,15 +1,15 @@
 import React from 'react';
-import { Line } from '@ant-design/charts';
+import { Area } from '@ant-design/charts';
 import { CoingeckoHistoryData } from '../../Types/CoingeckoHistoryData';
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi';
 import { useParams } from 'react-router-dom';
 import { Skeleton } from 'antd';
 
 const DemoLine: React.FC = () => {
-  const { id } = useParams<any>()
+  const { id } = useParams<{ id: string }>()
 
-  const [coingekoCoinsHistoryData] = useCoingeckoCryptoApi<CoingeckoHistoryData>("GET", `coins/${id}/market_chart?vs_currency=eur&days=30&interval=daily`)
-  console.log(coingekoCoinsHistoryData?.prices)
+  const [coingekoCoinsHistoryData] = useCoingeckoCryptoApi<CoingeckoHistoryData>("GET", `coins/${id}/market_chart?vs_currency=eur&days=90&interval=daily`)
+  console.log(id)
 
 
   if (!coingekoCoinsHistoryData) { return <Skeleton /> }
@@ -22,7 +22,7 @@ const DemoLine: React.FC = () => {
       tickCount: 5,
     },
   };
-  return <Line {...config} />;
+  return <Area {...config} />;
 };
 
 export default DemoLine;
