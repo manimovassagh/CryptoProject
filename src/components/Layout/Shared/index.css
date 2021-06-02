@@ -19,3 +19,7 @@
 .site-layout .site-layout-background {
   background: #fff;
 }
+.ant-statistic-title{
+  color: rgb(33, 3, 102) !important;
+  font-weight: 600;
+}

@@ -124,14 +124,16 @@ export function CoingeckoDetails(): ReactElement {
           </div>
         </Col>
         {/* new Card */}
-        <Col span={5}>
+      </Row>
+      <Row>
+        <Col span={6}>
           <Statistic title="Latest Average Price in Euro" value={`${calculateAveragePricePerEuro(coingekoCoins)} €`} precision={2} />
           <Button onClick={() => clickHandler()} style={{ marginTop: 16 }} type="primary">
             Back to Home
       </Button>
         </Col>
-        <Col span={6}>
-          <a href={coingekoCoins?.links.homepage[0]} target={"blank"}>
+        <Col span={18} style={{ alignContent: "end" }}>
+          <a style={{ color: "black !important" }} href={coingekoCoins?.links.homepage[0]} target={"blank"}>
             <Statistic title={coingekoCoins?.links.homepage[0]} value={coingekoCoins?.links.homepage[0]} loading />
           </a>
         </Col>
