@@ -1,5 +1,5 @@
 import React, { ReactElement } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi'
 import { CoingekoDetails } from '../../Types/CoingekoDetailsType'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
@@ -41,7 +41,6 @@ export function CoingeckoDetails(): ReactElement {
   const ResultOfChange = selectedCoinFurtherData?.price_change_24h
   const currentPriceByApi = selectedCoinFurtherData?.current_price
 
-  console.log(selectedCoinFurtherData?.price_change_percentage_24h)
   //#endregion
 
   if (!coinEuroFilter || !coingekoCoins) { return <LoadingSpinner /> }
@@ -150,6 +149,11 @@ export function CoingeckoDetails(): ReactElement {
           </Col >
         )}</>
       </Row>
+      <Link to={'/coingeckodetails/:id/description'}>
+        <Button type="primary" block>
+          See more Details about this Coin
+      </Button>
+      </Link>
     </>
   )
 }

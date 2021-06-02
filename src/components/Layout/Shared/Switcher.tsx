@@ -1,5 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router-dom'
+import CoingeckoDescription from '../Pages/CoingeckoDescription'
 import { CoingeckoDetails } from '../Pages/CoingeckoDetails'
 import { CoingeckoList } from '../Pages/CoingeckoList'
 import { CryptoDetails } from '../Pages/CryptoDetails'
@@ -10,6 +11,9 @@ export function Switcher() {
     <Switch>
       <Route exact path="/">
         <CoingeckoList />
+      </Route>
+      <Route exact path="/coingeckodetails/:id/description" >
+        <CoingeckoDescription />
       </Route>
       <Route exact path="/coingeckodetails/:id" >
         <CoingeckoDetails />

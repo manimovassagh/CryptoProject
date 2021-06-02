@@ -22,7 +22,6 @@ export function CoingeckoList(): ReactElement {
   const history = useHistory()
   function clickHandler(id: string) {
     history.push(`/coingeckodetails/${id}`)
-    console.log(id)
   }
 
 
