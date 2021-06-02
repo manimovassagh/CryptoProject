@@ -54,7 +54,7 @@ export function MainLayout() {
             <Col push={2} span={12}> <Title level={3}  >Cryptopedia</Title></Col>
             <Col span={8}>
             </Col>
-            <Col span={3} style={{ textAlign: 'end' }} >
+            <Col span={3} style={{ textAlign: 'end', padding: 15 }} >
               {/* user Login Avatar */}
               <Avatar style={{ backgroundColor: '#132c54' }} icon={<UserOutlined />} />
             </Col>
