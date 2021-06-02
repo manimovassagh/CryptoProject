@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useState } from 'react'
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi'
 import { CoingekoMarkets } from '../../Types/CoingekoType'
 import { Avatar, Input, Skeleton, Table } from 'antd'
@@ -7,8 +7,8 @@ import { columns } from './CoingeckoList.Column'
 import * as _ from 'lodash'
 export function CoingeckoList(): ReactElement {
   const { Search } = Input;
-  const [coingeckoCoins] = useCoingeckoCryptoApi<CoingekoMarkets[]>('GET', 'coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-
+  const [coingeckoCoins, setCoingekocoins] = useCoingeckoCryptoApi<CoingekoMarkets[]>('GET', 'coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
+  const [searchTerm, setSearchTerm] = useState('')
 
   function onChange(pagination: {}, filters: any, sorter: any, extra: any) {
     console.log('params', pagination, filters, sorter, extra);
@@ -24,7 +24,8 @@ export function CoingeckoList(): ReactElement {
 
   return (
     <>
-      <Search placeholder="Enter Coin name to Search" loading={false} />
+      <Search type={"text"} onChange={e => setSearchTerm(e.target.value)} placeholder="Enter Coin name to Search" loading={false} />
+
       <Table onChange={onChange} rowKey={(record) => record.symbol} style={{ cursor: 'pointer' }}
         onRow={(_selectedRow) => {
           return {
