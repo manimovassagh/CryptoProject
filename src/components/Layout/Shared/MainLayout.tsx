@@ -6,7 +6,6 @@ import { Switcher } from './Switcher'
 import { Typography } from 'antd';
 import './index.css';
 import 'antd/dist/antd.css';
-import { SearchBar } from '../Pages/SearchBar';
 
 // Define Consts
 const { Header, Sider, Content } = Layout;
@@ -54,9 +53,9 @@ export function MainLayout() {
             </Col >
             <Col push={2} span={12}> <Title level={3}  >Cryptopedia</Title></Col>
             <Col span={8}>
-              <SearchBar />
             </Col>
-            <Col span={3} >
+            <Col span={3} style={{ textAlign: 'end' }} >
+              {/* user Login Avatar */}
               <Avatar style={{ backgroundColor: '#132c54' }} icon={<UserOutlined />} />
             </Col>
           </Row>
