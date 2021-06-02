@@ -5,11 +5,14 @@ import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi';
 import { useParams } from 'react-router-dom';
 import { Skeleton } from 'antd';
 
+interface Props {
+  duration: number
+}
 
-const CoinChart: React.FC = () => {
+const CoinChart: React.FC<Props> = (props: Props) => {
   const { id } = useParams<{ id: string }>()
-  const [coingekoCoinsHistoryData] = useCoingeckoCryptoApi<CoingeckoHistoryData>("GET", `coins/${id}/market_chart?vs_currency=eur&days=90&interval=daily`)
-
+  const [coingekoCoinsHistoryData] = useCoingeckoCryptoApi<CoingeckoHistoryData>("GET", `coins/${id}/market_chart?vs_currency=eur&days=${props.duration}&interval=daily`)
+  console.log(coingekoCoinsHistoryData?.prices[0][0])
 
   if (!coingekoCoinsHistoryData) { return <Skeleton /> }
   const config = {
@@ -19,10 +22,15 @@ const CoinChart: React.FC = () => {
     xAxis: {
       type: 'timeCat',
       tickCount: 5,
-
-
     },
+    slider: {
+      start: 0.1,
+      end: 0.9,
+      // coingekoCoinsHistoryData?.prices[0][0]
+      // coingekoCoinsHistoryData?.prices[coingekoCoinsHistoryData?.prices.length - 1][0],
 
+      // trendCfg: { isArea: true },
+    },
 
   };
   return <Area {...config} />;

@@ -1,5 +1,5 @@
-import { Button, Col, Divider, Row } from 'antd'
-import React, { ReactElement } from 'react'
+import { Button, Col, Divider, Input, Row } from 'antd'
+import React, { ReactElement, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi'
 import { CoingekoDetails } from '../../Types/CoingekoDetailsType'
@@ -10,9 +10,11 @@ import { Typography } from 'antd';
 const { Title } = Typography;
 
 export default function CoingeckoDescription(): ReactElement {
+  const [duration, setDuration] = useState<number>(90)
   const { id } = useParams<{ id: string }>()
   const [coingekoCoins] = useCoingeckoCryptoApi<CoingekoDetails>("GET", `coins/${id}?market_data=false&community_data=false&developer_data=false&sparkline=false`)
   console.log(coingekoCoins?.image.large)
+
 
   if (!coingekoCoins) { return <LoadingSpinner /> }
   return (
@@ -20,7 +22,7 @@ export default function CoingeckoDescription(): ReactElement {
       <Row align={"middle"}>
         <Col span={12}>
           <Title level={3} style={{ color: "darkblue" }} >{coingekoCoins?.localization.en} </Title>
-          <Title level={5} style={{ color: "darkblue" }} >Three Month Chart </Title>
+
         </Col>
         <Col style={{ textAlign: "right" }} span={12}>
           <Image
@@ -30,7 +32,9 @@ export default function CoingeckoDescription(): ReactElement {
         </Col>
       </Row>
 
-      <CoinChart />
+      <CoinChart duration={duration} />
+      <Divider orientation="left">Give your Custom Duration In dayas to see in Chart</Divider>
+      <Input onChange={(e) => setDuration(Number(e.target.value))} placeholder="Give your Duration Range In Days" />
       <Divider orientation="left">Read more About This Coin</Divider>
       <div
         dangerouslySetInnerHTML={{
