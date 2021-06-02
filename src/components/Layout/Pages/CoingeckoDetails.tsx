@@ -14,7 +14,6 @@ export function CoingeckoDetails(): ReactElement {
   const { id } = useParams<any>()
   const [coingekoCoins] = useCoingeckoCryptoApi<CoingekoDetails>("GET", `coins/${id}?market_data=false&community_data=false&developer_data=false&sparkline=false`)
   const [coingeckoCoinsForAll] = useCoingeckoCryptoApi<CoingekoMarkets[]>('GET', 'coins/markets?vs_currency=eur&order=market_cap_desc&per_page=100&page=1&sparkline=false')
-
   // Helper Functions for Calculation
   //#region 
   const handleTickerPriceFilter = (_coinEuroFilter: CoingekoDetails | undefined) => {
@@ -49,7 +48,6 @@ export function CoingeckoDetails(): ReactElement {
   return (
     <>
       <Row align={'middle'}>
-
         <Col span={2}>
           <Image
             width={100}
@@ -149,11 +147,14 @@ export function CoingeckoDetails(): ReactElement {
           </Col >
         )}</>
       </Row>
-      <Link to={'/coingeckodetails/:id/description'}>
+      <Link to={`/coingeckodetails/${id}/description`}>
         <Button type="primary" block>
           See more Details about this Coin
       </Button>
       </Link>
+      {/* <Row justify="center">
+        <Col span={24}>here bring a chart component later</Col>
+      </Row> */}
     </>
   )
 }

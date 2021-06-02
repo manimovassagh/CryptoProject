@@ -43,19 +43,22 @@ export function MainLayout() {
         {/* part 2 is a main layout including header  */}
         <Layout className="site-layout">
           <Row align={'middle'}>
-            <Col span={1}>
+            <Col flex="100px">
               <Header className="site-layout-background" style={{ padding: 0 }}>
                 {React.createElement(collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
                   className: 'trigger',
                   onClick: toggle,
                 })}
               </Header>
-            </Col >
-            <Col push={2} span={12}> <Title level={3}  >Cryptopedia</Title></Col>
-            <Col span={8}>
+            </Col  >
+
+            <Col flex="auto" style={{ textAlign: "center", paddingTop: "25 !important" }}>
+              <Title level={3}  >Cryptopedia</Title>
             </Col>
+
+
+            {/* user Login Avatar */}
             <Col span={3} style={{ textAlign: 'end', padding: 15 }} >
-              {/* user Login Avatar */}
               <Avatar style={{ backgroundColor: '#132c54' }} icon={<UserOutlined />} />
             </Col>
           </Row>
