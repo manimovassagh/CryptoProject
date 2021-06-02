@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Line } from '@ant-design/charts';
 import { CoingeckoHistoryData } from '../../Types/CoingeckoHistoryData';
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi';

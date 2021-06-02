@@ -150,7 +150,7 @@ export function CoingeckoDetails(): ReactElement {
       </Row>
       <Link to={`/coingeckodetails/${id}/description`}>
         <Button type="primary" block>
-          See more Details about this Coin
+          See Coin 30 days Chart and History
       </Button>
       </Link>
       {/* <Row justify="center">
