@@ -29,7 +29,6 @@ export function CoingeckoDetails(): ReactElement {
     }
   }
 
-
   const history = useHistory()
   function clickHandler() {
     history.push(`/`)
