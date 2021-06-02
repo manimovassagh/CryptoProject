@@ -16,12 +16,11 @@ export default function CoingeckoDescription(): ReactElement {
 
   if (!coingekoCoins) { return <LoadingSpinner /> }
   return (
-
     <>
-
       <Row align={"middle"}>
         <Col span={12}>
-          <Title level={3} style={{ color: "darkblue" }} >{coingekoCoins?.localization.en} "Season Chart"</Title>
+          <Title level={3} style={{ color: "darkblue" }} >{coingekoCoins?.localization.en} </Title>
+          <Title level={5} style={{ color: "darkblue" }} >Three Month Chart </Title>
         </Col>
         <Col style={{ textAlign: "right" }} span={12}>
           <Image
@@ -40,10 +39,9 @@ export default function CoingeckoDescription(): ReactElement {
       />
       <Link to={`/coingeckodetails/${id}`}>
         <Button type="primary" block>
-          Go back to Page
+          Go back
       </Button>
       </Link>
     </>
-
   )
 }

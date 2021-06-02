@@ -20,7 +20,9 @@ const CoinChart: React.FC = () => {
       type: 'timeCat',
       tickCount: 5,
 
+
     },
+
 
   };
   return <Area {...config} />;
