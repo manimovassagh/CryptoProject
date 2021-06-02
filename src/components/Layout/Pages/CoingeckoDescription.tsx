@@ -1,22 +1,38 @@
-import { Button } from 'antd'
+import { Button, Col, Divider, Row } from 'antd'
 import React, { ReactElement } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi'
 import { CoingekoDetails } from '../../Types/CoingekoDetailsType'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
-import DemoLine from './CoingekoChart'
+import CoinChart from './CoingekoChart'
+import { Image } from 'antd';
+import { Typography } from 'antd';
+const { Title } = Typography;
 
 export default function CoingeckoDescription(): ReactElement {
-  const { id } = useParams<any>()
+  const { id } = useParams<{ id: string }>()
   const [coingekoCoins] = useCoingeckoCryptoApi<CoingekoDetails>("GET", `coins/${id}?market_data=false&community_data=false&developer_data=false&sparkline=false`)
-
+  console.log(coingekoCoins?.image.large)
 
   if (!coingekoCoins) { return <LoadingSpinner /> }
   return (
 
     <>
-      <DemoLine />
 
+      <Row align={"middle"}>
+        <Col span={12}>
+          <Title level={3} style={{ color: "darkblue" }} >{coingekoCoins?.localization.en} "Season Chart"</Title>
+        </Col>
+        <Col style={{ textAlign: "right" }} span={12}>
+          <Image
+            width={50}
+            src={coingekoCoins?.image.large}
+          />
+        </Col>
+      </Row>
+
+      <CoinChart />
+      <Divider orientation="left">Read more About This Coin</Divider>
       <div
         dangerouslySetInnerHTML={{
           __html: coingekoCoins?.description.en,

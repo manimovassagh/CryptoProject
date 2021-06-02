@@ -5,11 +5,10 @@ import { useCoingeckoCryptoApi } from '../../CustomHooks/Coingecko.CryptoApi';
 import { useParams } from 'react-router-dom';
 import { Skeleton } from 'antd';
 
-const DemoLine: React.FC = () => {
-  const { id } = useParams<{ id: string }>()
 
+const CoinChart: React.FC = () => {
+  const { id } = useParams<{ id: string }>()
   const [coingekoCoinsHistoryData] = useCoingeckoCryptoApi<CoingeckoHistoryData>("GET", `coins/${id}/market_chart?vs_currency=eur&days=90&interval=daily`)
-  console.log(id)
 
 
   if (!coingekoCoinsHistoryData) { return <Skeleton /> }
@@ -20,9 +19,11 @@ const DemoLine: React.FC = () => {
     xAxis: {
       type: 'timeCat',
       tickCount: 5,
+
     },
+
   };
   return <Area {...config} />;
 };
 
-export default DemoLine;
+export default CoinChart;
