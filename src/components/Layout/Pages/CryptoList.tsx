@@ -2,11 +2,12 @@ import React from 'react'
 import { Table } from 'antd'
 import LoadingSpinner from '../LoadingSpinner/LoadingSpinner'
 import { useHistory } from 'react-router-dom'
-import { dataSource } from '../Shared/DummyData'
+import { useBinanceCryptoApi } from '../../CustomHooks/Binance.CryptoApi'
+import { Coin } from '../../Types/BinanceType'
 
 
 export function CryptoList() {
-  // const [coins] = useBinanceCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
+  const [coins] = useBinanceCryptoApi<Coin[]>('GET', 'api/v3/ticker/bookTicker')
   // console.log(dataSource)
   const columns = [
     {
@@ -41,7 +42,7 @@ export function CryptoList() {
     history.push(`/details/${value}`)
   }
 
-  if (!dataSource) { return <LoadingSpinner /> }
+  if (!coins) { return <LoadingSpinner /> }
 
   return (
     <Table rowKey={(record) => record.symbol} style={{ cursor: 'pointer' }}
@@ -50,6 +51,6 @@ export function CryptoList() {
           onClick: () => clickHandler(_selectedRow.symbol)
         };
       }}
-      columns={columns} dataSource={dataSource} />
+      columns={columns} dataSource={coins} />
   )
 }

@@ -117,8 +117,6 @@ export function CoingeckoDetails(): ReactElement {
                     />
                   </Card>
                 </Col>)}
-
-
             </Row>
           </div>
         </Col>
@@ -153,9 +151,6 @@ export function CoingeckoDetails(): ReactElement {
           See Coin Chart and History
       </Button>
       </Link>
-      {/* <Row justify="center">
-        <Col span={24}>here bring a chart component later</Col>
-      </Row> */}
     </>
   )
 }

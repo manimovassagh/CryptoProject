@@ -40,7 +40,7 @@ export function CoingeckoList(): ReactElement {
     }
   }
 
-  // define guard 
+  // Define guard 
   if (!coingeckoCoins) { return <Skeleton /> }
   // return main section
   return (
